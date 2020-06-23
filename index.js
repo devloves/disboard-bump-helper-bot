@@ -137,6 +137,11 @@ client.on('message', async message => {
                     }
                 });
                 return;
+            case 'catfact':
+                const req = await fetch("https://catfact.ninja/fact");
+                const data = await req.json();
+                await message.channel.send(data['fact'])
+                break;
             case 'help':
                 toSend = [
                     'test - returns a message to check if bot\'s working',
